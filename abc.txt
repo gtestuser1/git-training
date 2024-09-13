@@ -1,2 +1,0 @@
-repository for training on git
-
