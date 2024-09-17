@@ -18,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
  
 # Create a test binary
-add_executable(check_cred_test check_cred_data.cpp)
+add_executable(check_cred_test test/check_cred_data.cpp)
 target_link_libraries(check_cred_test GTest::gtest_main)
  
 # Enable testing
