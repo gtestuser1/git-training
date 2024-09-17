@@ -33,6 +33,12 @@ TEST(testsuit1, testcase_1){
 TEST(testsuit1, testcase_2){
 	EXPECT_EQ(validatePassword("wipro@123"),false);
 }
-TEST(testsuit1, testcase_3){
+TEST(testsuit2, testcase_1){
 	EXPECT_EQ(validatePassword("Wipro$$123"),true);
+}
+TEST(testsuit2, testcase_2){
+	EXPECT_EQ(validatePassword("Prudhvia99"),false);
+}
+TEST(testsuit1, testcase_3){
+	EXPECT_EQ(validatePassword("prudhvi@@"),false);
 }
