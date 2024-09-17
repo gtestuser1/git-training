@@ -42,3 +42,6 @@ TEST(testsuit2, testcase_2){
 TEST(testsuit1, testcase_3){
 	EXPECT_EQ(validatePassword("prudhvi@@"),false);
 }
+TEST(testsuit2, testcase_3){
+	EXPECT_EQ(validatePassword("prudhvi@@"),false);
+}
