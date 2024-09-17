@@ -28,7 +28,7 @@ bool validatePassword(const string &password) {
 
 
 TEST(testsuit1, testcase_1){
-	EXPECT_EQ(validatePassword(""),true);
+	EXPECT_EQ(validatePassword(""),false);
 }
 TEST(testsuit1, testcase_2){
 	EXPECT_EQ(validatePassword("wipro@123"),false);
