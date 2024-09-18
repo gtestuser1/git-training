@@ -1,0 +1,5 @@
+if(EXISTS "/home/prabhareddyb13/aptiv/build/check_cred_test[1]_tests.cmake")
+  include("/home/prabhareddyb13/aptiv/build/check_cred_test[1]_tests.cmake")
+else()
+  add_test(check_cred_test_NOT_BUILT check_cred_test_NOT_BUILT)
+endif()
