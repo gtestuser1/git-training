@@ -4,10 +4,10 @@
 #include <gtest/gtest.h>
 
 
-using namespace std;
+// using namespace std;
 
 // Function to check if the password meets the criteria
-bool validatePassword(const string &password) {
+bool validatePassword(const std::string &password) {
 	// Criteria flags
 	 bool hasUpper = false;
 	 bool hasLower = false;
