@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <string>
 
-// Function to be tested
+/*Function to be tested*/
 std::string checkCredentials(const std::string& username, const std::string& password) {
     const std::string correctUsername = "admin";
     const std::string correctPassword = "password123";
