@@ -1,3 +1,0 @@
-/home/prabhareddyb13/aptiv/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
-/home/prabhareddyb13/aptiv/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
-/home/prabhareddyb13/aptiv/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir

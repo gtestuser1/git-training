@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/check_cred_test.dir/test/check_cred_test.cpp.o -o check_cred_test  lib/libgtest_main.a lib/libgtest.a 
