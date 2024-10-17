@@ -1,0 +1,246 @@
+From 470c59db7e330d3f773363998fcea9ad8f075b96 Mon Sep 17 00:00:00 2001
+From: Akshay H
+ <akshayh@devops-akshay.asia-south2-a.c.wipro-1665033568848.internal>
+Date: Fri, 13 Sep 2024 11:26:36 +0000
+Subject: [PATCH 1/8] Added sample cpp file
+
+---
+ sample.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+ create mode 100644 sample.cpp
+
+diff --git a/sample.cpp b/sample.cpp
+new file mode 100644
+index 0000000..6d15b5c
+--- /dev/null
++++ b/sample.cpp
+@@ -0,0 +1,9 @@
++#include<iostream>
++
++using namespace std;
++
++int main()
++{
++	cout<<"Hello world"<<endl;
++	return 0;
++}
+
+From a386ed761c1a95de99232abd4d79811b02d4929c Mon Sep 17 00:00:00 2001
+From: prabhavathi <prabhavathi.balireddi@wipro.com>
+Date: Tue, 17 Sep 2024 08:02:11 +0000
+Subject: [PATCH 2/8] Modified apythonfile.py
+
+---
+ apythonfile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apythonfile.py b/apythonfile.py
+index b092a8f..0e95f34 100644
+--- a/apythonfile.py
++++ b/apythonfile.py
+@@ -3,4 +3,4 @@
+ 
+ if __name__ == "__main__":
+     os.system("ping google.com -c 6")
+-    print("Ping complete")
++    print("Ping complete 6 times")
+
+From daa743b750d8a95327677b0d2e6b695f502d9539 Mon Sep 17 00:00:00 2001
+From: prabhavathi <prabhavathi.balireddi@wipro.com>
+Date: Tue, 17 Sep 2024 08:37:12 +0000
+Subject: [PATCH 3/8] modified in apythonfile.py
+
+---
+ apythonfile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apythonfile.py b/apythonfile.py
+index 0e95f34..b092a8f 100644
+--- a/apythonfile.py
++++ b/apythonfile.py
+@@ -3,4 +3,4 @@
+ 
+ if __name__ == "__main__":
+     os.system("ping google.com -c 6")
+-    print("Ping complete 6 times")
++    print("Ping complete")
+
+From c41042471bbb79dc5b7e3f4e1c558fd22ab8df70 Mon Sep 17 00:00:00 2001
+From: Akshay H
+ <akshayh@devops-akshay.asia-south2-a.c.wipro-1665033568848.internal>
+Date: Tue, 17 Sep 2024 13:23:00 +0000
+Subject: [PATCH 4/8] Added gtest code
+
+---
+ test/CMakeLists.txt      | 26 ++++++++++++++++++++++++++
+ test/check_cred_data.cpp | 30 ++++++++++++++++++++++++++++++
+ 2 files changed, 56 insertions(+)
+ create mode 100644 test/CMakeLists.txt
+ create mode 100644 test/check_cred_data.cpp
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+new file mode 100644
+index 0000000..b02beb3
+--- /dev/null
++++ b/test/CMakeLists.txt
+@@ -0,0 +1,26 @@
++cmake_minimum_required(VERSION 3.14)
++project(check_cred_project)
++ 
++# Set C++ standard
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++ 
++# Add your factorial program
++# add_executable(check_cred_prog check_cred.cpp)
++ 
++# Include GoogleTest using FetchContent
++include(FetchContent)
++FetchContent_Declare(
++    googletest
++URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
++)
++FetchContent_MakeAvailable(googletest)
++include(GoogleTest)
++ 
++# Create a test binary
++add_executable(check_cred_test check_cred_data.cpp)
++target_link_libraries(check_cred_test GTest::gtest_main)
++ 
++# Enable testing
++enable_testing()
++gtest_discover_tests(check_cred_test)
+diff --git a/test/check_cred_data.cpp b/test/check_cred_data.cpp
+new file mode 100644
+index 0000000..bd01fce
+--- /dev/null
++++ b/test/check_cred_data.cpp
+@@ -0,0 +1,30 @@
++#include <gtest/gtest.h>
++#include <iostream>
++#include <string>
++
++using namespace std;
++
++// Function to check username and password
++bool checkCredentials(const string& username, const string& password) {
++    // Predefined username and password
++    const string correctUsername = "admin";
++    const string correctPassword = "password123";
++    
++    // Check if provided username and password are correct
++    if (username == correctUsername && password == correctPassword) {
++        return true; // Success
++    } else {
++        return false; // Failure
++    }
++}
++
++TEST(TestNegetiveCase, HandleNegetiveCase)
++{
++  EXPECT_EQ(checkCredentials("",""),false);
++}
++
++TEST(TestPositiveCase, HandlePositiveCase)
++{
++  EXPECT_EQ(checkCredentials("admin","password123"),true);
++}
++
+
+From 9d963c3b53cf5abbd6be07a0244f398c06924e1b Mon Sep 17 00:00:00 2001
+From: Akshay H
+ <akshayh@devops-akshay.asia-south2-a.c.wipro-1665033568848.internal>
+Date: Tue, 17 Sep 2024 13:30:25 +0000
+Subject: [PATCH 5/8] Added changes in the CMakelist file
+
+---
+ test/CMakeLists.txt => CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ rename test/CMakeLists.txt => CMakeLists.txt (91%)
+
+diff --git a/test/CMakeLists.txt b/CMakeLists.txt
+similarity index 91%
+rename from test/CMakeLists.txt
+rename to CMakeLists.txt
+index b02beb3..a069073 100644
+--- a/test/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
+ include(GoogleTest)
+  
+ # Create a test binary
+-add_executable(check_cred_test check_cred_data.cpp)
++add_executable(check_cred_test test/check_cred_data.cpp)
+ target_link_libraries(check_cred_test GTest::gtest_main)
+  
+ # Enable testing
+
+From 76ade57ebd496ee876767fc5f76b4c04475a9f55 Mon Sep 17 00:00:00 2001
+From: Satyakam Shashwat
+ <satyakam@devops-satyakam.asia-south2-c.c.wipro-1665033568848.internal>
+Date: Wed, 9 Oct 2024 06:58:38 +0000
+Subject: [PATCH 6/8] Changing apythonfile.py count to five
+
+---
+ apythonfile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apythonfile.py b/apythonfile.py
+index b092a8f..4a8fcca 100644
+--- a/apythonfile.py
++++ b/apythonfile.py
+@@ -2,5 +2,5 @@
+ import os
+ 
+ if __name__ == "__main__":
+-    os.system("ping google.com -c 6")
++    os.system("ping google.com -c 5")
+     print("Ping complete")
+
+From afdef5d5b11157e0c12ff52589ba6c45d4a8f8e7 Mon Sep 17 00:00:00 2001
+From: Satyakam Shashwat
+ <satyakam@devops-satyakam.asia-south2-c.c.wipro-1665033568848.internal>
+Date: Mon, 14 Oct 2024 06:58:10 +0000
+Subject: [PATCH 7/8] Few changes done
+
+---
+ abc.txt        | 1 +
+ apythonfile.py | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/abc.txt b/abc.txt
+index e69de29..b3533b0 100644
+--- a/abc.txt
++++ b/abc.txt
+@@ -0,0 +1 @@
++Yooo
+diff --git a/apythonfile.py b/apythonfile.py
+index 4a8fcca..12c66bf 100644
+--- a/apythonfile.py
++++ b/apythonfile.py
+@@ -4,3 +4,4 @@
+ if __name__ == "__main__":
+     os.system("ping google.com -c 5")
+     print("Ping complete")
++    print("Dr.Ali")
+
+From 21b790d4154542d32f33bc599c9649e3c67f17de Mon Sep 17 00:00:00 2001
+From: Satyakam Shashwat
+ <satyakam@devops-satyakam.asia-south2-c.c.wipro-1665033568848.internal>
+Date: Mon, 14 Oct 2024 07:26:31 +0000
+Subject: [PATCH 8/8] Made changes to apythonfile.py
+
+---
+ apythonfile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apythonfile.py b/apythonfile.py
+index 12c66bf..19b552d 100644
+--- a/apythonfile.py
++++ b/apythonfile.py
+@@ -4,4 +4,4 @@
+ if __name__ == "__main__":
+     os.system("ping google.com -c 5")
+     print("Ping complete")
+-    print("Dr.Ali")
++
